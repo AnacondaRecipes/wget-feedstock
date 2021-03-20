@@ -17,13 +17,17 @@ requirements:
     - {{ compiler('c') }}
     - pkg-config
     - make
+
   host:
     - openssl
+{% if bootstrapping != 'yes' %}
     - libidn2
     - libunistring
     - zlib
+{% endif %}
   run:
     - openssl
+{% if bootstrapping != 'yes' %}
     - libidn2
     - libunistring
     - zlib
@@ -34,6 +38,7 @@ test:
     - wget --version
       # test that SSL works
     - wget https://github.com/conda-forge
+{% endif %}
 
 about:
   home: https://www.gnu.org/software/wget/
