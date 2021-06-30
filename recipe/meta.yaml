@@ -21,17 +21,21 @@ requirements:
     - pkg-config
     - make
   host:
+    # On systems with gettext(), Wget will output messages in the language
+    # set by the current locale, if available
+    - gettext >=0.19.3
     - openssl
     - libidn2
     # When Wget 1.18+ is built with libiconv, it now converts non-ASCII URIs to
     # the locale's codeset when it creates files https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS
-    - libiconv
+    - libiconv  # [not ppc64le]
     - libunistring
     - zlib
   run:
+    - gettext >=0.19.3
     - openssl
     - libidn2
-    - libiconv
+    - libiconv  # [not ppc64le]
     - libunistring
     - zlib
 
