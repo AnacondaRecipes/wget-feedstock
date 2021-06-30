@@ -11,6 +11,9 @@ source:
 build:
   number: 0
   skip: True  # [win]
+  # To fix a build error "run-exports library package pkgs/main::libunistring in requirements/run but it is not used"
+  ignore_run_exports:
+    - libunistring
 
 requirements:
   build:
@@ -20,11 +23,15 @@ requirements:
   host:
     - openssl
     - libidn2
+    # When Wget 1.18+ is built with libiconv, it now converts non-ASCII URIs to
+    # the locale's codeset when it creates files https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS
+    - libiconv
     - libunistring
     - zlib
   run:
     - openssl
     - libidn2
+    - libiconv
     - libunistring
     - zlib
 
@@ -37,7 +44,8 @@ test:
 
 about:
   home: https://www.gnu.org/software/wget/
-  license: GPL3
+  license: GPL-3.0
+  license_family: GPL
   license_file: COPYING
   summary: utility for non-interactive download of files from the Web
   description: |
@@ -45,6 +53,7 @@ about:
     the most widely-used Internet protocols.
   doc_url: https://www.gnu.org/software/wget/
   doc_source_url: https://savannah.gnu.org/projects/wget/
+  dev_url: https://git.savannah.gnu.org/cgit/wget.git/tree/
 
 extra:
   recipe-maintainers:
