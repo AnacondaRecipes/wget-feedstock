@@ -1,4 +1,4 @@
-{% set version = "1.20.1" %}
+{% set version = "1.21.1" %}
 
 package:
   name: wget
@@ -6,11 +6,14 @@ package:
 
 source:
   url: http://ftp.gnu.org/gnu/wget/wget-{{ version }}.tar.gz
-  sha256: b783b390cb571c837b392857945f5a1f00ec6b043177cc42abb8ee1b542ee1b3
+  sha256: 59ba0bdade9ad135eda581ae4e59a7a9f25e3a4bde6a5419632b31906120e26e
 
 build:
   number: 0
   skip: True  # [win]
+  # To fix a build error "run-exports library package pkgs/main::libunistring in requirements/run but it is not used"
+  ignore_run_exports:
+    - libunistring
 
 requirements:
   build:
@@ -20,11 +23,15 @@ requirements:
   host:
     - openssl
     - libidn2
+    # When Wget 1.18+ is built with libiconv, it now converts non-ASCII URIs to
+    # the locale's codeset when it creates files https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS
+    - libiconv  # [not ppc64le]
     - libunistring
     - zlib
   run:
     - openssl
     - libidn2
+    - libiconv  # [not ppc64le]
     - libunistring
     - zlib
 
@@ -37,7 +44,8 @@ test:
 
 about:
   home: https://www.gnu.org/software/wget/
-  license: GPL3
+  license: GPL-3.0
+  license_family: GPL
   license_file: COPYING
   summary: utility for non-interactive download of files from the Web
   description: |
@@ -45,6 +53,7 @@ about:
     the most widely-used Internet protocols.
   doc_url: https://www.gnu.org/software/wget/
   doc_source_url: https://savannah.gnu.org/projects/wget/
+  dev_url: https://git.savannah.gnu.org/cgit/wget.git/tree/
 
 extra:
   recipe-maintainers:
