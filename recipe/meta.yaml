@@ -1,4 +1,4 @@
-{% set version = "1.20.1" %}
+{% set version = "1.21.2" %}
 
 package:
   name: wget
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://ftp.gnu.org/gnu/wget/wget-{{ version }}.tar.gz
-  sha256: b783b390cb571c837b392857945f5a1f00ec6b043177cc42abb8ee1b542ee1b3
+  sha256: e6d4c76be82c676dd7e8c61a29b2ac8510ae108a810b5d1d18fc9a1d2c9a2497
 
 build:
   number: 0
