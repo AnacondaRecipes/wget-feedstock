@@ -1,4 +1,4 @@
-{% set version = "1.21.3" %}
+{% set version = "1.21.4" %}
 
 package:
   name: wget
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://ftp.gnu.org/gnu/wget/wget-{{ version }}.tar.gz
-  sha256: 5726bb8bc5ca0f6dc7110f6416e4bb7019e2d2ff5bf93d1ca2ffcc6656f220e5
+  sha256: 81542f5cefb8faacc39bbbc6c82ded80e3e4a88505ae72ea51df27525bcde04c
 
 build:
   number: 0
@@ -18,11 +18,11 @@ requirements:
     - pkg-config
     - make
   host:
-    - openssl
-    - libidn2
-    - zlib
+    - openssl 3.0.8
+    - libidn2 2.3.1
+    - zlib 1.2.13
   run:
-    - openssl
+    - openssl 3.*
     - libidn2
     - zlib
 
