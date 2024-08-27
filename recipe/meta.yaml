@@ -21,7 +21,7 @@ requirements:
     - openssl {{ openssl }}
     - libidn2 2.3.4
     - zlib 1.2.13
-    - libunistring
+    - libunistring 0.9.1
   run:
     - openssl  # exact pin handled through openssl run_exports
     - libidn2
