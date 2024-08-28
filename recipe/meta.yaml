@@ -7,7 +7,10 @@ package:
 source:
   url: https://ftp.gnu.org/gnu/wget/wget-{{ version }}.tar.gz
   sha256: fa2dc35bab5184ecbc46a9ef83def2aaaa3f4c9f3c97d4bd19dcb07d4da637de
-
+  # Patching for CVE is required. When the newest version is availble,
+  # this patch can be removed.
+  patches:
+    - patches/ed0c7c7e0e8f7298352646b2fd6e06a11e242ace.patch
 build:
   number: 0
   skip: True  # [win]
@@ -17,6 +20,7 @@ requirements:
     - {{ compiler('c') }}
     - pkg-config
     - make
+    - patch # [unix]
   host:
     - openssl {{ openssl }}
     - libidn2 2.3.4
