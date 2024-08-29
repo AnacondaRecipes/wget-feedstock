@@ -1,4 +1,4 @@
-{% set version = "1.21.4" %}
+{% set version = "1.24.5" %}
 
 package:
   name: wget
@@ -6,10 +6,13 @@ package:
 
 source:
   url: https://ftp.gnu.org/gnu/wget/wget-{{ version }}.tar.gz
-  sha256: 81542f5cefb8faacc39bbbc6c82ded80e3e4a88505ae72ea51df27525bcde04c
-
+  sha256: fa2dc35bab5184ecbc46a9ef83def2aaaa3f4c9f3c97d4bd19dcb07d4da637de
+  # Patching for CVE-2024-38428 is required. Once a cleared version is released,
+  # this patch can be removed.
+  patches:
+    - patches/ed0c7c7e0e8f7298352646b2fd6e06a11e242ace.patch
 build:
-  number: 1
+  number: 0
   skip: True  # [win]
 
 requirements:
@@ -17,14 +20,17 @@ requirements:
     - {{ compiler('c') }}
     - pkg-config
     - make
+    - patch # [unix]
   host:
     - openssl {{ openssl }}
     - libidn2 2.3.4
     - zlib 1.2.13
+    - libunistring 0.9.10
   run:
     - openssl  # exact pin handled through openssl run_exports
     - libidn2
     - zlib
+    - libunistring
 
 test:
   commands:
