@@ -1,16 +1,16 @@
-{% set version = "1.24.5" %}
+{% set version = "2.2.0" %}
 
 package:
   name: wget
   version: {{ version }}
 
 source:
-  url: https://ftp.gnu.org/gnu/wget/wget-{{ version }}.tar.gz
-  sha256: fa2dc35bab5184ecbc46a9ef83def2aaaa3f4c9f3c97d4bd19dcb07d4da637de
+  url: https://ftp.gnu.org/gnu/wget/wget2-{{ version }}.tar.gz
+  sha256: 2b3b9c85b7fb26d33ca5f41f1f8daca71838d869a19b406063aa5c655294d357
   # Patching for CVE-2024-38428 is required. Once a cleared version is released,
   # this patch can be removed.
-  patches:
-    - patches/ed0c7c7e0e8f7298352646b2fd6e06a11e242ace.patch
+  # patches:
+  #   - patches/ed0c7c7e0e8f7298352646b2fd6e06a11e242ace.patch
 build:
   number: 0
   skip: True  # [win]
