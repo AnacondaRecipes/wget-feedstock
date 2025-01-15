@@ -30,7 +30,11 @@ requirements:
     - openssl  # exact pin handled through openssl run_exports
     - libidn2
     - zlib
+    - libiconv
     - libunistring
+    - pandoc
+    - flex >=2.5.35
+    - gettext >=0.18.2
 
 test:
   commands:
