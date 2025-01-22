@@ -22,7 +22,7 @@ requirements:
     - libidn2 2.3.4
     - zlib 1.2.13
     - libunistring 0.9.10
-    - pcre2 8.45
+    - pcre2
   run:
     - openssl  # exact pin handled through openssl run_exports
     - libidn2
