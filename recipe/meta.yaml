@@ -1,13 +1,13 @@
-{% set version = "2.2.0" %}
+{% set version = "1.25.0" %}
 
 package:
   name: wget
   version: {{ version }}
 
 source:
-  url: https://ftp.gnu.org/gnu/wget/wget2-{{ version }}.tar.gz
-  sha256: 2b3b9c85b7fb26d33ca5f41f1f8daca71838d869a19b406063aa5c655294d357
-  
+  url: https://ftp.gnu.org/gnu/wget/wget-{{ version }}.tar.gz
+  sha256: 766e48423e79359ea31e41db9e5c289675947a7fcf2efdcedb726ac9d0da3784
+
 build:
   number: 0
   skip: True  # [win]
