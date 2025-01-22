@@ -14,4 +14,4 @@
 make
 make install
 
-ln -s ${PREFIX}/bin/wget2 ${PREFIX}/bin/wget
+# ln -s ${PREFIX}/bin/wget2 ${PREFIX}/bin/wget
