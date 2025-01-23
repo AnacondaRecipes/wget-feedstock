@@ -7,7 +7,7 @@ package:
 source:
   url: https://ftp.gnu.org/gnu/wget/wget-{{ version }}.tar.gz
   sha256: 766e48423e79359ea31e41db9e5c289675947a7fcf2efdcedb726ac9d0da3784
-  
+
 build:
   number: 0
   skip: True  # [win]
@@ -22,7 +22,7 @@ requirements:
     - libidn2 2.3.4
     - zlib 1.2.13
     - libunistring 0.9.10
-    - pcre2
+    - pcre2 10.42
   run:
     - openssl  # exact pin handled through openssl run_exports
     - libidn2
