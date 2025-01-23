@@ -11,6 +11,7 @@
             --with-metalink                \
             --with-cares                   \
             --with-libpsl                  \
+            --with-gnults                  \
 	    CC=${CC}
 make
 make install
