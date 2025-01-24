@@ -23,15 +23,14 @@ requirements:
     - zlib 1.2.13
     - libunistring 0.9.10
     - pcre2 10.42
-    - gnutls 3.6.15
+    - gettext 0.21.0
+    - libiconv 1.16
   run:
     - openssl  # exact pin handled through openssl run_exports
     - libidn2
     - zlib
     - libunistring
     - pcre2
-    - libiconv
-    - gettext
 
 test:
   commands:
