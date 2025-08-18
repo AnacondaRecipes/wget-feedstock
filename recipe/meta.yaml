@@ -1,30 +1,32 @@
+{% set name = "wget" %}
 {% set version = "1.25.0" %}
 
 package:
-  name: wget
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://ftp.gnu.org/gnu/wget/wget-{{ version }}.tar.gz
+  url: https://ftp.gnu.org/gnu/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 766e48423e79359ea31e41db9e5c289675947a7fcf2efdcedb726ac9d0da3784
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - pkg-config
     - make
   host:
     - openssl {{ openssl }}
-    - libidn2 2.3.4
-    - zlib 1.2.13
-    - libunistring 0.9.10
-    - pcre2 10.42
-    - gettext 0.21.0
-    - libiconv 1.16
+    - libidn2 {{ libidn2 }}
+    - zlib {{ zlib }}
+    - pcre2 {{ pcre2 }}
+    - gettext {{ gettext }}
+    - libiconv {{ libiconv }}
+    - libunistring 1.3
   run:
     - openssl  # exact pin handled through openssl run_exports
     - libidn2
