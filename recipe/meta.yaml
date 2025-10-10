@@ -6,11 +6,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://ftp.gnu.org/gnu/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  # Using mirror server since the default one is unreachable by CI
+  url: https://ftpmirror.gnu.org/gnu/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 766e48423e79359ea31e41db9e5c289675947a7fcf2efdcedb726ac9d0da3784
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win]
 
 requirements:
@@ -42,7 +43,7 @@ test:
     - wget https://github.com/conda-forge
 
 about:
-  home: https://www.gnu.org/software/wget/
+  home: https://www.gnu.org/software/wget
   license: GPL-3.0-or-later
   license_file: COPYING
   license_family: GPL
@@ -50,7 +51,7 @@ about:
   description: |
     wget is a free software package for retrieving files using HTTP, HTTPS and FTP,
     the most widely-used Internet protocols.
-  doc_url: https://www.gnu.org/software/wget/
+  doc_url: https://www.gnu.org/software/wget
   dev_url: https://savannah.gnu.org/git/?group=wget
 
 extra:
